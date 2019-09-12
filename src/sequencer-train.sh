@@ -21,10 +21,10 @@ fi
 cd $data_path
 echo "Starting data preprocessing"
 # Change code in preprocess.sh to adjust OpenNMT parameters (like vocab size)
-preprocess.sh
+./preprocess.sh
 echo "Starting training"
 # Change code in train.sh to adjust OpenNMT parameters (like LSTM layer count)
-train.sh
+./train.sh
 
 echo "sequencer-train.sh done"
 echo

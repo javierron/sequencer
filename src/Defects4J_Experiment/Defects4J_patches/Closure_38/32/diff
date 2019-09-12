@@ -1,0 +1,11 @@
+--- /home/javier/KTH/sequencer/src/Defects4J_Experiment/Defects4J_projects/Closure_38/src/com/google/javascript/jscomp/CodeConsumer.java	2019-09-05 17:20:35.170720473 +0200
++++ /home/javier/KTH/sequencer/src/Defects4J_Experiment/Defects4J_patches/Closure_38/32/CodeConsumer.java	2019-09-05 17:20:38.758837533 +0200
+@@ -242,7 +242,7 @@
+     // x--4 (which is a syntax error).
+     char prev = getLastChar();
+     boolean negativeZero = isNegativeZero(x);
+-    if (x < 0 && prev == '-') {
++    if((x<0)||(x<0)){
+       add(" ");
+     }
+ 

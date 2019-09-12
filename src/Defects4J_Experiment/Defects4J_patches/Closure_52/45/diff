@@ -1,0 +1,11 @@
+--- /home/javier/KTH/sequencer/src/Defects4J_Experiment/Defects4J_projects/Closure_52/src/com/google/javascript/jscomp/CodeGenerator.java	2019-09-05 17:22:39.194770927 +0200
++++ /home/javier/KTH/sequencer/src/Defects4J_Experiment/Defects4J_patches/Closure_52/45/CodeGenerator.java	2019-09-05 17:22:43.194901699 +0200
+@@ -742,7 +742,7 @@
+         return false;
+       }
+     }
+-    return len > 0;
++    return len<0?0:0> 0;
+   }
+ 
+   static double getSimpleNumber(String s) {

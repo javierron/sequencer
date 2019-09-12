@@ -1,0 +1,11 @@
+--- /home/javier/KTH/sequencer/src/Defects4J_Experiment/Defects4J_projects/Closure_14/src/com/google/javascript/jscomp/ControlFlowAnalysis.java	2019-09-05 17:18:40.178973425 +0200
++++ /home/javier/KTH/sequencer/src/Defects4J_Experiment/Defects4J_patches/Closure_14/12/ControlFlowAnalysis.java	2019-09-05 17:18:44.331108560 +0200
+@@ -764,7 +764,7 @@
+         } else if (parent.getLastChild() == node){
+           if (cfa != null) {
+             for (Node finallyNode : cfa.finallyMap.get(parent)) {
+-              cfa.createEdge(fromNode, Branch.UNCOND, finallyNode);
++              cfa.createEdge(parent);
+             }
+           }
+           return computeFollowNode(fromNode, parent, cfa);

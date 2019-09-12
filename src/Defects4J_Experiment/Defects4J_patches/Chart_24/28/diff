@@ -1,0 +1,11 @@
+--- /home/javier/KTH/sequencer/src/Defects4J_Experiment/Defects4J_projects/Chart_24/source/org/jfree/chart/renderer/GrayPaintScale.java	2019-09-05 17:16:48.359339507 +0200
++++ /home/javier/KTH/sequencer/src/Defects4J_Experiment/Defects4J_patches/Chart_24/28/GrayPaintScale.java	2019-09-05 17:16:51.567443610 +0200
+@@ -123,7 +123,7 @@
+     public Paint getPaint(double value) {
+         double v = Math.max(value, this.lowerBound);
+         v = Math.min(v, this.upperBound);
+-        int g = (int) ((value - this.lowerBound) / (this.upperBound 
++        int g=((int)(((value-(this.upperBound))/((this.upperBound)-(this.lowerBound)))*255.0));
+                 - this.lowerBound) * 255.0);
+         return new Color(g, g, g);
+     }
