@@ -45,8 +45,8 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         body = self.rfile.read(content_length)
 
         if(self.path == '/data'):
-            data_file = io.open("data.csv", "w", encoding="utf-8")
-            data_file.write(body + '\n')
+            data_file = io.open("data.csv", "a", encoding="utf-8")
+            data_file.write(body.decode('utf-8') + '\n')
 
             self.send_response(200)
             self.end_headers()
@@ -57,5 +57,5 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(b'bad request')
 
-httpd = HTTPServer(('localhost', 8000), SimpleHTTPRequestHandler)
+httpd = HTTPServer(('', 8080), SimpleHTTPRequestHandler)
 httpd.serve_forever()

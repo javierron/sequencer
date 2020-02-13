@@ -28,10 +28,9 @@ do
        
         echo "executing remote training..."
 
-        sshpass -e $TRAIN_URL '~/pfs/sequencer/src/Continuous_Learning/continuous-learning-train.sh'
+        sshpass -e ssh $TRAIN_URL '~/pfs/sequencer/src/Continuous_Learning/continuous-learning-get-and-submit.sh'
 
-        # rm -rf $DIFFS_DIR/*
-        # rm $DATA_PATH/*
+        rm -rf $DIFFS_DIR/*
     fi
 
 
