@@ -4,9 +4,9 @@
 # Name of the job 
 #SBATCH -J Sequencer-train
 # name of the output file
-#SBATCH --output=seq-train.out
+#SBATCH --output=/pfs/nobackup/home/j/javierro/seq-train.out
 # name of the error file
-#SBATCH --error=seq-train.err
+#SBATCH --error=/pfs/nobackup/home/j/javierro/seq-train.err
 
 # asking for 1 core
 #SBATCH -n 1
@@ -15,6 +15,9 @@
 #SBATCH --time=360
 #SBATCH --gres=gpu:v100:1,gpuexcl
 
+
+# uncommnent to activate virtualenv
+# source $HOME/sequencer/env.sh
 
 # run the program
 srun $HOME/sequencer/src/Continuous_Learning/continuous-learning-train-and-test.sh

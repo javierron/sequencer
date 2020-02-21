@@ -2,17 +2,15 @@
 
 set -e
 set -x
-# snic specific env
-# export HOME=/pfs/nobackup$HOME
-# source $HOME/sequencer/env.sh
 
 export DATE=`date +"%d%m%Y-%H%M"`
-export DATA_PATH="$CONTINUOUS_LEARNING_PATH/processed/$DATE"
+# export HOME=/pfs/nobackup$HOME
 
 OpenNMT_py="$HOME/OpenNMT-py"
 CONTINUOUS_LEARNING_PATH="$HOME/sequencer/src/Continuous_Learning"
 DEFECTS4J_EXPERMENT_PATH="$HOME/sequencer/src/Defects4J_Experiment"
 
+export DATA_PATH="$CONTINUOUS_LEARNING_PATH/processed/$DATE"
 VOCABULARY="$HOME/sequencer/results/Golden/vocab.txt"
 
 MODEL_PATH="$CONTINUOUS_LEARNING_PATH/models"

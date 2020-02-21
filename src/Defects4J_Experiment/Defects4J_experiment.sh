@@ -19,7 +19,7 @@ echo "Defects4J_oneLinerFix.sh start"
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 DEFECTS4J_DIR=$CURRENT_DIR/Defects4J_projects
-CONTINUOUS_LEARNING_DATA=$CURRENT_DIR/../Continuous_Learning/monitor/single_run_data
+CONTINUOUS_LEARNING_DATA=$CURRENT_DIR/../Continuous_Learning/public/single_run_data
 
 echo "Creating directory 'Defects4J_projects'"
 mkdir -p $DEFECTS4J_DIR

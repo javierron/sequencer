@@ -34,6 +34,6 @@ do
     fi
 
 
-    sleep 5m
+    sleep 8h
 
 done
