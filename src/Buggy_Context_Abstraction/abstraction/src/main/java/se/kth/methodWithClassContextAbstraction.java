@@ -21,9 +21,6 @@ import com.github.difflib.algorithm.DiffException;
 import com.github.difflib.patch.AbstractDelta;
 import com.github.difflib.patch.Patch;
 
-import gumtree.spoon.AstComparator;
-import gumtree.spoon.diff.Diff;
-import gumtree.spoon.diff.support.SpoonSupport;
 import spoon.Launcher;
 import spoon.reflect.CtModel;
 import spoon.reflect.path.CtPath;

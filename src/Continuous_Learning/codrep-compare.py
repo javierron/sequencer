@@ -1,5 +1,5 @@
 
-import io;
+import io
 import sys
 
 def main(argv):
@@ -16,11 +16,15 @@ def main(argv):
     target_file = io.open(path_to_test_data, "r", encoding="utf-8")
     patches_file = io.open(path_to_predictions, "r", encoding="utf-8")
 
+    training_passed_file = io.open("training-passed", "a", encoding="utf-8")
+
     target_lines = target_file.readlines()
 
     matches_found_no_repeat = 0
     matches_found_total = 0
 
+
+    target_lines_index = 0
     for target_line in target_lines:
         found = 0
         for i in range(n):
@@ -31,6 +35,9 @@ def main(argv):
                 if(found == 0):
                     matches_found_no_repeat += 1
                 found = 1
+                training_passed_file.write(f"{patch_line.strip()},{target_lines_index}\n")
+        target_lines_index += 1
+
 
     print("found fixes for " + str(matches_found_no_repeat) + " bugs")
     print("found " + str(matches_found_total) + " total fixes")
@@ -40,6 +47,9 @@ def main(argv):
     with open(path_to_output, "w") as result_file:
         result_file.write(str(matches_found_total) + "," + str(matches_found_no_repeat) + "," + str(len(target_lines)))
 
+    target_file.close()
+    patches_file.close()
+    training_passed_file.close()
 
 if __name__=="__main__":
     main(sys.argv[1:])

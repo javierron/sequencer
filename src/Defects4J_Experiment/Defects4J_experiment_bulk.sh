@@ -66,7 +66,7 @@ echo
 for j in ${PARSED_MODEL_LIST[@]}
 do
     : 
-    DEFECTS4J_PATCHES_DIR="$CURRENT_DIR/Defects4J_patches/$k" 
+    DEFECTS4J_PATCHES_DIR="$CURRENT_DIR/Defects4J_patches/$j" 
     CREATED=`find $DEFECTS4J_PATCHES_DIR -name '*' -type d | wc -l | awk '{print $1}'`
     COMPILED=`find $DEFECTS4J_PATCHES_DIR -name '*_compiled' | wc -l | awk '{print $1}'`
     PASSED=`find $DEFECTS4J_PATCHES_DIR -name '*_passed' | wc -l | awk '{print $1}'`

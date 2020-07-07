@@ -27,13 +27,6 @@
     <artifactId>diffutils</artifactId>
     <version>3.0</version>
     </dependency>
-    <dependency>
-      <groupId>fr.inria.gforge.spoon.labs</groupId>
-      <artifactId>gumtree-spoon-ast-diff</artifactId>
-      <version>1.6-SNAPSHOT</version>
-      <systemPath>${project.basedir}/lib/gumtree-spoon-ast-diff-1.6-SNAPSHOT-jar-with-dependencies.jar</systemPath>
-      <scope>system</scope>
-    </dependency>
   </dependencies>
   <build>
   <plugins>

@@ -1,0 +1,28 @@
+
+
+next steps:
+    - filter hunks
+        - comments *
+        - package names
+    - there seems to be some useful data inside multi line hunks (?)
+    - use whole context files + diff
+
+    - accuracy measurement (?)
+        - Defects4J
+        - correct patches / passing patches / ?
+
+
+
+push the intermediate models
+push one-liners to github
+automate code4rep test / match with tgt-test
+
+metadata as json files
+    - training time
+    - training loss at start / loss at finish
+    - training parameters
+
+SAVE projects / commits / numbers
+
+
+

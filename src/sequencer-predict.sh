@@ -33,6 +33,10 @@ case $i in
     MODEL="${i#*=}"
     shift # past argument=value
     ;;
+    --true_file_path=*)
+    TRUE_FILE_PATH="${i#*=}"
+    shift # past argument=value
+    ;;
     *)
           # unknown option
     ;;
@@ -131,7 +135,7 @@ python3 $CURRENT_DIR/lib/OpenNMT-py/translate.py -model $MODEL -src $CURRENT_DIR
 echo
 
 echo "Post process predictions"
-python3 $CURRENT_DIR/Patch_Preparation/postPrcoessPredictions.py $CURRENT_DIR/tmp/predictions.txt $CURRENT_DIR/tmp
+python3 $CURRENT_DIR/Patch_Preparation/postProcessPredictions.py $CURRENT_DIR/tmp/predictions.txt $CURRENT_DIR/tmp
 retval=$?
 if [ $retval -ne 0 ]; then
   echo "Post process generates none valid predictions"
@@ -150,7 +154,9 @@ echo
 
 echo "Generating diffs"
 for patch in $OUTPUT/*; do
-  diff -u -w $BUGGY_FILE_PATH $patch/$BUGGY_FILE_NAME > $patch/diff
+  echo "--- a/$TRUE_FILE_PATH" > $patch/diff
+  echo "+++ b/$TRUE_FILE_PATH" >> $patch/diff
+  diff -u -w $BUGGY_FILE_PATH $patch/$BUGGY_FILE_NAME | tail -n +2 >> $patch/diff
 done
 echo
 

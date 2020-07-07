@@ -1,0 +1,8 @@
+private KnowledgeElement element ;
+import org . eclipse . emfcloud . modelserver . client . ModelServerClient ;
+super ( jsonHelper , TransactionType . ACCOUNT_METADATA ,
+for ( int j = 0 ; j < 8 ; j ++ ) {
+super ( jsonHelper , TransactionType . MULTISIG_ACCOUNT_MODIFICATION ,
+String urlBase = options . getUrlBase ( ) ;
+super ( jsonHelper , TransactionType . NAMESPACE_METADATA ,
+super ( jsonHelper , TransactionType . ACCOUNT_METADATA ,

@@ -5,9 +5,12 @@ set -x
 
 while [ "$1" != "" ]; do
   case $1 in
-    -l | --learning-rate )
+    -lr | --learning-rate )
       LEARNING_RATE=$2
       shift
+      ;;
+    -l | --local )
+      LOCAL=1
       ;;
   esac
   shift
@@ -35,9 +38,24 @@ fi
 
 export PATH=$PATH:"$HOME/defects4j/framework/bin"
 
+if [ $LOCAL -eq "1" ] ; then
+
+  PROCESSED_PATH="$HOME/processed/$DATE"
+  mkdir "$PROCESSED_PATH"
+
+  # copy files to date folder
+  cp "$DATA_PATH/src-train.txt" "$PROCESSED_PATH/src-train.txt"
+  cp "$DATA_PATH/tgt-train.txt" "$PROCESSED_PATH/tgt-train.txt"
+
+  cp "$DATA_PATH/src-val.txt" "$PROCESSED_PATH/src-val.txt"
+  cp "$DATA_PATH/tgt-val.txt" "$PROCESSED_PATH/tgt-val.txt"
+
+  DATA_PATH=$PROCESSED_PATH
+fi
+
 OpenNMT_py="$HOME/OpenNMT-py"
 CONTINUOUS_LEARNING_PATH="$HOME/sequencer/src/Continuous_Learning"
-DEFECTS4J_EXPERMENT_PATH="$HOME/sequencer/src/Defects4J_Experiment"
+DEFECTS4J_EXPERIMENT_PATH="$HOME/sequencer/src/Defects4J_Experiment"
 
 VOCABULARY="$HOME/sequencer/results/Golden/vocab.txt"
 
@@ -103,9 +121,11 @@ cp $NEW_MODEL $MODEL_PATH/model-$DATE.pt
 ./codrep-test.sh -m $MODEL_TESTING_PATH/model.pt
 
 echo ",$DATE,$THREAD_ID" >> $CONTINUOUS_LEARNING_PATH/Codrep_Results/$THREAD_ID/$DATE/result.txt
-curl -X POST -d @$CONTINUOUS_LEARNING_PATH/Codrep_Results/$THREAD_ID/$DATE/result.txt $FILE_SERVER_URL/data-codrep
 
+if [ $LOCAL -ne "1" ] ; then
+  curl -X POST -d @$CONTINUOUS_LEARNING_PATH/Codrep_Results/$THREAD_ID/$DATE/result.txt $FILE_SERVER_URL/data-codrep
+fi
 
-# cd $DEFECTS4J_EXPERMENT_PATH
+# cd $DEFECTS4J_EXPERIMENT_PATH
 # ./Defects4J_experiment.sh -l -t
 # curl -X POST -d @$CONTINUOUS_LEARNING_PATH/public/single_run_data $FILE_SERVER_URL/data-d4j

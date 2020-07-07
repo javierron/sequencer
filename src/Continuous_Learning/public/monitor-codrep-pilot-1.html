@@ -8,8 +8,10 @@
   
 </head>
 <body>
-
+    <!-- <label id="batchCount">Collecting current batch... XXX / 10000</label> -->
+    
     <canvas id="myChart"></canvas>
+
 <script>
 
 (() => {
@@ -80,6 +82,13 @@
         }
     });
   });
+
+  $.get("http://localhost:8080/data-codrep-pilot-1")
+    .done( data => {
+      const lines = data.trim().split("\n");
+      document.getElementById('batchCount').innerHTML = `Collecting current batch... ${lines.length} / 10000`;
+  });
+
 })();
 
 </script>
